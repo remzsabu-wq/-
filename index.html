@@ -2,43 +2,35 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>image test</title>
+<title>all images</title>
 <style>
   body {
     margin: 0;
-    background: black;
+    background: #000;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
   }
-  canvas {
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+    border: 2px solid #444;
     background: #222;
   }
 </style>
 </head>
 <body>
 
-<canvas id="c" width="600" height="400"></canvas>
-
-<script>
-const ctx = document.getElementById("c").getContext("2d");
-
-const images = [
-  { src: "IMG_0562-removebg-preview.png", x: 50,  y: 100 },
-  { src: "IMG_0566.png",                  x: 250, y: 100 },
-  { src: "IMG_0571.png",                  x: 450, y: 100 }
-];
-
-images.forEach(data => {
-  const img = new Image();
-  img.src = data.src;
-  img.onload = () => {
-    ctx.drawImage(img, data.x, data.y, 100, 100);
-  };
-});
-</script>
+<img src="IMG_0562-removebg-preview.png">
+<img src="IMG_0566.png">
+<img src="IMG_0571.png">
+<img src="IMG_0573-removebg-preview.png">
+<img src="IMG_0575-removebg-preview.png">
+<img src="IMG_0577-removebg-preview.png">
+<img src="IMG_0596.png">
 
 </body>
 </html>
-
