@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>image test</title>
+</head>
+<body>
+
+<p>画像テスト：</p>
+<img src="images/test.png" width="200">
+
+</body>
+</html>
