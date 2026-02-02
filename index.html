@@ -2,81 +2,46 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>2D Shooting</title>
+  <title>image test</title>
   <style>
     body {
       margin: 0;
-      background: #000;
-      overflow: hidden;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     canvas {
-      display: block;
-      margin: 0 auto;
-      background: #000;
+      background: #222;
     }
   </style>
 </head>
 <body>
-<canvas id="game" width="480" height="640"></canvas>
+  <canvas id="game" width="400" height="400"></canvas>
 
-<script>
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
 
-// 画像読み込み
-const playerImg = new Image();
-playerImg.src = "images/player.png";
+    const img1 = new Image();
+    img1.src = "IMG_0562-removebg-preview.png";
 
-const enemyImg = new Image();
-enemyImg.src = "images/enemy.png";
+    const img2 = new Image();
+    img2.src = "IMG_0566.png";
 
-// プレイヤー
-const player = {
-  x: 220,
-  y: 520,
-  w: 40,
-  h: 40,
-  speed: 5
-};
+    const img3 = new Image();
+    img3.src = "IMG_0571.png";
 
-// 敵
-const enemy = {
-  x: 220,
-  y: 100,
-  w: 40,
-  h: 40
-};
-
-// 入力
-const keys = {};
-window.addEventListener("keydown", e => keys[e.key] = true);
-window.addEventListener("keyup", e => keys[e.key] = false);
-
-function update() {
-  if (keys["ArrowLeft"]) player.x -= player.speed;
-  if (keys["ArrowRight"]) player.x += player.speed;
-
-  player.x = Math.max(0, Math.min(canvas.width - player.w, player.x));
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.drawImage(playerImg, player.x, player.y, player.w, player.h);
-  ctx.drawImage(enemyImg, enemy.x, enemy.y, enemy.w, enemy.h);
-}
-
-function loop() {
-  update();
-  draw();
-  requestAnimationFrame(loop);
-}
-
-// 画像ロード後スタート
-Promise.all([
-  new Promise(r => playerImg.onload = r),
-  new Promise(r => enemyImg.onload = r)
-]).then(loop);
-</script>
+    Promise.all([
+      new Promise(r => img1.onload = r),
+      new Promise(r => img2.onload = r),
+      new Promise(r => img3.onload = r)
+    ]).then(() => {
+      ctx.drawImage(img1, 50, 50, 100, 100);
+      ctx.drawImage(img2, 200, 50, 100, 100);
+      ctx.drawImage(img3, 125, 200, 100, 100);
+    });
+  </script>
 </body>
 </html>
